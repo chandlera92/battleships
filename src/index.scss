@@ -1,0 +1,20 @@
+@import './scss/_variables';
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('./assets/fonts/BebasNeue-Regular.ttf') format('truetype');
+  /* Add additional font properties if needed */
+}
+
+body {
+  margin: 0;
+  font-family: 'Bebas Neue', 'Helvetica Neue', sans-serif;
+  color: $color-white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $background-gradient;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

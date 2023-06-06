@@ -1,0 +1,61 @@
+@import "../../scss/variables";
+
+.boardGameEntryForm {
+    .formContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $padding-32;
+
+        .formInputGroup {
+            display: flex;
+            flex-direction: column;
+            gap: $padding-8;
+            margin: $padding-32 auto 0;
+            width: 300px;
+
+            .formLabel {
+                font-size: $font-size-32;
+                font-weight: bold;
+            }
+
+            .formInput {
+                padding: $padding-8;
+                font-size: $font-size-16;
+                border: $border-1;
+                border-radius: $border-radius-4;
+                transition: border-color 0.3s;
+
+                &.invalid {
+                    border-color: $color-red;
+                }
+            }
+
+            .validationMessage {
+                font-size: $font-size-16;
+                color: $color-red;
+                white-space: normal; // Wrap text within validation message
+
+                // Adjust spacing for better readability
+                margin-top: 4px;
+            }
+        }
+
+        .formButton {
+            font-family: inherit;
+            padding: $padding-8 $padding-16;
+            font-size: $font-size-22;
+            background-color: darken($color-lime, 20%);
+            color: $color-white;
+            border: $border-none;
+            border-radius: $border-radius-4;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            align-self: flex-end;
+
+            &:hover {
+                background-color: darken($color-lime, 30%);
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react-hooks";
-import useGameBoard, { Props, GameBoard } from "./useGameBoard";
+import { Props, GameBoard, useGameBoard } from "./useGameBoard";
 
 describe("useGameBoard", () => {
   const props: Props = {

@@ -22,7 +22,7 @@ export type GameBoard = {
  * This custom React hook initializes and updates the game board state,
  * as well as provides functions for firing at cells and resetting the board.
  */
-const useGameBoard = ({ boardSize, shipSizes }: Props): GameBoard => {
+export const useGameBoard = ({ boardSize, shipSizes }: Props): GameBoard => {
   const totalShipCells = shipSizes.reduce((acc, ship) => {
     return acc + ship;
   }, 0);
@@ -70,5 +70,3 @@ const useGameBoard = ({ boardSize, shipSizes }: Props): GameBoard => {
     yAxis,
   };
 };
-
-export default useGameBoard;

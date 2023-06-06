@@ -22,7 +22,7 @@ export const CoordinateForm: React.FC = () => {
   };
 
   return (
-    <div className="boardGameEntryForm">
+    <div className="boardGameEntryForm" data-testid={"coordinateForm"}>
       <form onSubmit={handleSubmit} className="formContainer">
         <div className="formInputGroup">
           <label htmlFor="coordinateInput" className="formLabel">

@@ -30,7 +30,8 @@ export function placeShip(
   shipSize: number
 ): void {
   const orientation = Math.floor(Math.random() * 4); // Randomly choose the orientation of the ship
-  let row: number = -1, col: number = -1; // Initialize with -1 as placeholder values before assigning actual coordinates
+  let row: number = -1,
+    col: number = -1; // Initialize with -1 as placeholder values before assigning actual coordinates
 
   // Choose a random starting position for the ship, ensuring it's within the grid's bounds.
   switch (orientation) {

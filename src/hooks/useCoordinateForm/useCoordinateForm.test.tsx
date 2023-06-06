@@ -123,4 +123,26 @@ describe("useCoordinateForm", () => {
     // Verify that the fire function is not called
     expect(mockFire).not.toHaveBeenCalled();
   });
+
+  it("Should reset the form state", () => {
+    const { result } = renderHook(() => useCoordinateForm());
+
+    // Simulate input value change
+    act(() => {
+      result.current.handleChange({ target: { value: "a1" } } as any);
+    });
+
+    // Verify that the form state is updated
+    expect(result.current.inputValue).toBe("a1");
+    expect(result.current.hasError).toBe(false);
+
+    // Call the reset function
+    act(() => {
+      result.current.reset();
+    });
+
+    // Verify that the form state is reset
+    expect(result.current.inputValue).toBe("");
+    expect(result.current.hasError).toBe(false);
+  });
 });

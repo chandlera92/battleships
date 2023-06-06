@@ -1,15 +1,13 @@
 import React from "react";
 import { GameBoardProvider } from "./context/GameBoardContext";
-import { BoardGame } from "./components/GameBoard";
 import { CoordinateFormProvider } from "./context/CoordinateFormContext";
-import { CoordinateForm } from "./components/CoordinateForm";
+import { GameView } from "./views/GameView/GameView";
 
 function App() {
   return (
     <GameBoardProvider options={{ boardSize: 10, shipSizes: [5, 4, 4] }}>
       <CoordinateFormProvider>
-        <BoardGame />
-        <CoordinateForm />
+        <GameView />
       </CoordinateFormProvider>
     </GameBoardProvider>
   );

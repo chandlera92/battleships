@@ -11,6 +11,7 @@ export type CoordinateForm = {
   hasError: ErrorType | false;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: FormEvent) => void;
+  reset: () => void;
 };
 
 // Custom hook for handling coordinate form logic
@@ -75,11 +76,17 @@ export const useCoordinateForm = (): CoordinateForm => {
     }
   };
 
+  const reset = () => {
+    setHasError(false);
+    setInputValue("");
+  };
+
   // Return the coordinate form object
   return {
     inputValue,
     hasError,
     handleChange,
     handleSubmit,
+    reset,
   };
 };

@@ -16,7 +16,7 @@ export const BoardGame: React.FC = () => {
   } = useGameBoardContext();
 
   return (
-    <div className="boardGameWrapper" data-testid={"board-game-wrapper"}>
+    <div className="boardGameWrapper" data-testid={"boardGame"}>
       {/* Game Board Info */}
       <div className="boardGameInfo">
         <div className="boardGameTitle">Battleships</div>

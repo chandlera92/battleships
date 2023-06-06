@@ -2,6 +2,7 @@ import React from "react";
 import { useGameBoardContext } from "../../context/GameBoardContext";
 import "./GameBoard.scss";
 import clsx from "clsx";
+import { useCoordinateFormContext } from "../../context/CoordinateFormContext";
 
 export const BoardGame: React.FC = () => {
   // Retrieve necessary data from the GameBoardContext
@@ -14,6 +15,7 @@ export const BoardGame: React.FC = () => {
     shipCellsRemaining,
     totalShipCells,
   } = useGameBoardContext();
+  const { inputValue, handleChange } = useCoordinateFormContext();
 
   return (
     <div className="boardGameWrapper" data-testid={"boardGame"}>
@@ -56,16 +58,18 @@ export const BoardGame: React.FC = () => {
 
             {/* Game Board Cells */}
             {row.map((cell, cellIndex) => {
-              const cellKey = `${yAxis[rowIndex]}${xAxis[cellIndex]}`;
+              const cellKey =
+                `${yAxis[rowIndex]}${xAxis[cellIndex]}`.toUpperCase();
               return (
                 <div
                   className={clsx("boardGameCell", {
                     ship: cell.hasShip,
                     touched: cell.isHit,
-                    untouched: !cell.isHit,
+                    hover: inputValue === cellKey,
                   })}
                   id={cellKey}
                   onClick={() => !cell.isHit && fire(rowIndex, cellIndex)}
+                  onMouseEnter={() => handleChange(cellKey)}
                   key={cellKey}
                   data-testid={"game-board-cell"}
                 >

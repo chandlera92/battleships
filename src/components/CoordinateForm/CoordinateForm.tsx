@@ -32,7 +32,7 @@ export const CoordinateForm: React.FC = () => {
             type="text"
             id="coordinateInput"
             value={inputValue}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e.target.value)}
             className={`formInput ${Boolean(hasError) ? "invalid" : ""}`}
             title="Enter a coordinate in the format 'A1'"
             aria-invalid={Boolean(hasError)}

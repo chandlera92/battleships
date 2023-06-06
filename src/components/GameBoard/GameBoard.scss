@@ -56,16 +56,15 @@
                 }
 
                 &.touched {
-                    position: relative;
-
+                    &.hover,
                     &:hover {
                         background-color: rgba($color-red, 0.5);
                         cursor: not-allowed;
                     }
                 }
 
+                &.hover,
                 &:hover {
-                    position: relative;
                     background-color: rgba($color-lime, 0.5);
                 }
 

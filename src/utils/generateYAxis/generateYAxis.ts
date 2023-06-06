@@ -6,22 +6,22 @@ const base = 26;
  * @returns An array of y-axis labels.
  */
 export function generateYAxis(size: number): string[] {
-    const labels: string[] = [];
-    let index = 0;
-    let labelLength = 1;
+  const labels: string[] = [];
+  let index = 0;
+  let labelLength = 1;
 
-    while (labels.length < size) {
-        const label = generateLabel(index, labelLength);
-        labels.push(label);
+  while (labels.length < size) {
+    const label = generateLabel(index, labelLength);
+    labels.push(label);
 
-        index++;
-        if (index === Math.pow(base, labelLength)) {
-            index = 0;
-            labelLength++;
-        }
+    index++;
+    if (index === Math.pow(base, labelLength)) {
+      index = 0;
+      labelLength++;
     }
+  }
 
-    return labels;
+  return labels;
 }
 
 /**
@@ -31,10 +31,10 @@ export function generateYAxis(size: number): string[] {
  * @returns The generated label.
  */
 function generateLabel(index: number, length: number): string {
-    let label = "";
-    while (label.length < length) {
-        label = String.fromCharCode(97 + (index % base)) + label;
-        index = Math.floor(index / base);
-    }
-    return label;
+  let label = "";
+  while (label.length < length) {
+    label = String.fromCharCode(97 + (index % base)) + label;
+    index = Math.floor(index / base);
+  }
+  return label;
 }

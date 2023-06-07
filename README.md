@@ -1,3 +1,22 @@
+### Live
+
+https://chandlera92.github.io/battleships/
+
+### Overview
+The application utilizes two contexts that internally call custom hooks. The purpose of having separate contexts for the CoordinateForm and GameBoard is to ensure a clear separation of concerns. This approach allows the GameBoard to focus on its functionality without dictating how the consumer interacts with it.
+
+The code includes utility functions to handle generating the grid and Y axis. It's worth noting that the function responsible for generating the game board and randomly placing ships is relatively simple. Further details can be found in the code comments.
+
+To improve readability, the visible components have been divided into multiple files. While the ideal application structure for this project may be open to interpretation, the current arrangement avoids any obvious issues or drawbacks.
+
+For testing, the components were tested using React Testing Library and Jest. Additionally, CircleCI was set up to automatically run tests for each pull request (PR). The code was organized in a logical manner, allowing for easy navigation through the sequence of PRs. Each PR includes a brief description for added context.
+
+If you have any questions or would like further explanations regarding the decisions made or alternative approaches, please don't hesitate to reach out.
+
+Thank you!
+
+___________
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

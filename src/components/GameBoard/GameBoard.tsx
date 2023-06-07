@@ -15,7 +15,7 @@ export const BoardGame: React.FC = () => {
     shipCellsRemaining,
     totalShipCells,
   } = useGameBoardContext();
-  const { inputValue, handleChange } = useCoordinateFormContext();
+  const { inputValue, handleChange, reset } = useCoordinateFormContext();
 
   return (
     <div className="boardGameWrapper" data-testid={"boardGame"}>
@@ -30,6 +30,7 @@ export const BoardGame: React.FC = () => {
       {/* Game Board Container */}
       <div
         className="boardGameContainer"
+        onMouseLeave={() => reset()}
         style={{
           gridTemplateColumns: `minmax(16px, auto) repeat(${boardSize}, 1fr)`,
         }}

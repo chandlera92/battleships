@@ -7,16 +7,16 @@ jest.mock("../../context/GameBoardContext");
 
 // Mock the game board values from the game board context
 const mockGameBoard = [
-  [{ isHit: false }, { isHit: true }],
   [{ isHit: false }, { isHit: false }],
+  [{ isHit: true }, { isHit: false }],
 ];
 
 // Mock the fire function from the game board context
 const mockFire = jest.fn();
 
 // Mock the xAxis and yAxis values from the game board context
-const mockXAxis = [1, 2];
-const mockYAxis = ["a", "b"];
+const mockXAxis = ["a", "b"];
+const mockYAxis = [1, 2];
 
 describe("useCoordinateForm", () => {
   beforeEach(() => {

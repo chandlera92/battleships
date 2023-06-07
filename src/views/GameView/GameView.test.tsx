@@ -18,8 +18,8 @@ const defaultGameBoardContextOptions = {
   reset: jest.fn(),
   shipCellsRemaining: 1, // All ship cells are sunk
   totalShipCells: 9, // Total number of cells in the grid
-  xAxis: [1, 2, 3],
-  yAxis: ["A", "B", "C"],
+  xAxis: ["A", "B", "C"],
+  yAxis: [1, 2, 3],
 };
 
 const defaultCoordinateFormContextOptions = {

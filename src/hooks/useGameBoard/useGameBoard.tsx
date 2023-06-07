@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { generateYAxis, buildGameBoard, Grid } from "../../utils";
+import { generateXAxis, buildGameBoard, Grid } from "../../utils";
 
 export type Props = {
   boardSize: number;
@@ -13,8 +13,8 @@ export type GameBoard = {
   reset: () => void;
   shipCellsRemaining: number;
   totalShipCells: number;
-  xAxis: number[];
-  yAxis: string[];
+  xAxis: string[];
+  yAxis: number[];
 };
 
 /*
@@ -50,8 +50,8 @@ export const useGameBoard = ({ boardSize, shipSizes }: Props): GameBoard => {
   };
 
   // Generate the x-axis and y-axis labels for the game board
-  const xAxis = Array.from({ length: boardSize }, (_, i) => i + 1);
-  const yAxis = generateYAxis(boardSize);
+  const yAxis = Array.from({ length: boardSize }, (_, i) => i + 1);
+  const xAxis = generateXAxis(boardSize);
 
   // Function for resetting the game board to its initial state
   const reset = () => {

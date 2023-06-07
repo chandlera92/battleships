@@ -33,8 +33,8 @@ describe("BoardGame component", () => {
       ],
       fire: fireMock,
       boardSize: 3,
-      yAxis: ["A", "B", "C"],
-      xAxis: ["1", "2", "3"],
+      xAxis: ["A", "B", "C"],
+      yAxis: ["1", "2", "3"],
       shipCellsRemaining: 3,
       totalShipCells: 3,
     });

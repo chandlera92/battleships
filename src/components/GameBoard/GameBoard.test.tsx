@@ -2,9 +2,13 @@ import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useGameBoardContext } from "../../context/GameBoardContext";
 import { BoardGame } from "./GameBoard";
+import { useCoordinateFormContext } from "../../context/CoordinateFormContext";
 
 jest.mock("../../context/GameBoardContext");
+jest.mock("../../context/CoordinateFormContext");
+
 const fireMock = jest.fn();
+const handleChangeMock = jest.fn();
 
 describe("BoardGame component", () => {
   beforeEach(() => {
@@ -33,6 +37,15 @@ describe("BoardGame component", () => {
       xAxis: ["1", "2", "3"],
       shipCellsRemaining: 3,
       totalShipCells: 3,
+    });
+
+    // Mock the useCoordinateFormContext hook values
+    (useCoordinateFormContext as jest.Mock).mockReturnValue({
+      inputValue: "",
+      hasError: false,
+      handleChange: handleChangeMock,
+      handleSubmit: jest.fn(),
+      reset: jest.fn(),
     });
   });
   afterEach(() => {
@@ -73,9 +86,7 @@ describe("BoardGame component", () => {
       .getAllByTestId("game-board-cell")
       .filter((cell) => {
         return (
-          cell.className.includes("touched") &&
-          !cell.className.includes("ship") &&
-          !cell.className.includes("untouched")
+          cell.className.includes("touched") && !cell.className.includes("ship")
         );
       });
 
@@ -89,8 +100,7 @@ describe("BoardGame component", () => {
       .getAllByTestId("game-board-cell")
       .filter((cell) => {
         return (
-          !cell.className.includes("untouched") &&
-          cell.className.includes("ship")
+          cell.className.includes("ship") && cell.className.includes("touched")
         );
       });
 

@@ -9,7 +9,7 @@ export enum ErrorType {
 export type CoordinateForm = {
   inputValue: string;
   hasError: ErrorType | false;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleChange: (value: string) => void;
   handleSubmit: (e: FormEvent) => void;
   reset: () => void;
 };
@@ -38,8 +38,7 @@ export const useCoordinateForm = (): CoordinateForm => {
   };
 
   // Event handler for input value change
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  const handleChange = (value: string) => {
     setInputValue(value);
     setHasError(validateInput(value));
   };
@@ -56,8 +55,8 @@ export const useCoordinateForm = (): CoordinateForm => {
       return ErrorType.INVALID_COORDINATES;
     }
 
-    const row = xAxis.indexOf(x);
-    const column = yAxis.indexOf(y.toLowerCase());
+    const row = yAxis.indexOf(y.toLowerCase());
+    const column = xAxis.indexOf(x);
 
     if (gameBoard[row][column].isHit) {
       return ErrorType.CELL_ALREADY_FIRED;

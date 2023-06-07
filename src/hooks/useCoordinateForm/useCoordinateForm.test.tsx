@@ -1,18 +1,13 @@
 import { renderHook, act } from "@testing-library/react";
 import { useGameBoardContext } from "../../context/GameBoardContext";
-import {
-  useCoordinateForm,
-  CoordinateForm,
-  ErrorType,
-} from "./useCoordinateForm";
-import { GameBoard } from "../useGameBoard";
+import { useCoordinateForm, ErrorType } from "./useCoordinateForm";
 
 // Mock the useGameBoardContext hook
 jest.mock("../../context/GameBoardContext");
 
 // Mock the game board values from the game board context
 const mockGameBoard = [
-  [{ isHit: false }, { isHit: false }],
+  [{ isHit: false }, { isHit: true }],
   [{ isHit: false }, { isHit: false }],
 ];
 
@@ -46,7 +41,7 @@ describe("useCoordinateForm", () => {
 
     // Simulate input value change
     act(() => {
-      result.current.handleChange({ target: { value: "a1" } } as any);
+      result.current.handleChange("a1");
     });
 
     // Updated state
@@ -59,32 +54,31 @@ describe("useCoordinateForm", () => {
 
     // Valid input
     act(() => {
-      result.current.handleChange({ target: { value: "b2" } } as any);
+      result.current.handleChange("b2");
     });
     expect(result.current.hasError).toBe(false);
 
     // Invalid input (length less than 2)
     act(() => {
-      result.current.handleChange({ target: { value: "a" } } as any);
+      result.current.handleChange("a");
     });
     expect(result.current.hasError).toBe(ErrorType.INVALID_COORDINATES);
 
     // Invalid input (invalid x-axis value)
     act(() => {
-      result.current.handleChange({ target: { value: "c1" } } as any);
+      result.current.handleChange("c1");
     });
     expect(result.current.hasError).toBe(ErrorType.INVALID_COORDINATES);
 
     // Invalid input (invalid y-axis value)
     act(() => {
-      result.current.handleChange({ target: { value: "b3" } } as any);
+      result.current.handleChange("b3");
     });
     expect(result.current.hasError).toBe(ErrorType.INVALID_COORDINATES);
 
     // Invalid input (cell already fired)
-    mockGameBoard[1][0].isHit = true; // Mark cell as already fired
     act(() => {
-      result.current.handleChange({ target: { value: "a2" } } as any);
+      result.current.handleChange("a2");
     });
     expect(result.current.hasError).toBe(ErrorType.CELL_ALREADY_FIRED);
   });
@@ -94,7 +88,7 @@ describe("useCoordinateForm", () => {
 
     // Simulate input value change
     act(() => {
-      result.current.handleChange({ target: { value: "b2" } } as any);
+      result.current.handleChange("b2");
     });
 
     // Simulate form submission
@@ -112,7 +106,7 @@ describe("useCoordinateForm", () => {
 
     // Simulate input value change with an error
     act(() => {
-      result.current.handleChange({ target: { value: "c1" } } as any);
+      result.current.handleChange("c1");
     });
 
     // Simulate form submission
@@ -129,7 +123,7 @@ describe("useCoordinateForm", () => {
 
     // Simulate input value change
     act(() => {
-      result.current.handleChange({ target: { value: "a1" } } as any);
+      result.current.handleChange("a1");
     });
 
     // Verify that the form state is updated

@@ -37,6 +37,7 @@ export const CoordinateForm: React.FC = () => {
             title="Enter a coordinate in the format 'A1'"
             aria-invalid={Boolean(hasError)}
             aria-describedby="validationMessage"
+            autoComplete={"off"}
           />
           {hasError && (
             <div id="validationMessage" className="validationMessage">

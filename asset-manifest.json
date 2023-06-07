@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/battleships/static/css/main.fa37e3db.css",
-    "main.js": "/battleships/static/js/main.6eaffb34.js",
+    "main.js": "/battleships/static/js/main.b0d846a2.js",
     "static/js/787.6c4f98c4.chunk.js": "/battleships/static/js/787.6c4f98c4.chunk.js",
     "static/media/BebasNeue-Regular.ttf": "/battleships/static/media/BebasNeue-Regular.12e3683f9192436a7be8.ttf",
     "index.html": "/battleships/index.html",
     "main.fa37e3db.css.map": "/battleships/static/css/main.fa37e3db.css.map",
-    "main.6eaffb34.js.map": "/battleships/static/js/main.6eaffb34.js.map",
+    "main.b0d846a2.js.map": "/battleships/static/js/main.b0d846a2.js.map",
     "787.6c4f98c4.chunk.js.map": "/battleships/static/js/787.6c4f98c4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa37e3db.css",
-    "static/js/main.6eaffb34.js"
+    "static/js/main.b0d846a2.js"
   ]
 }

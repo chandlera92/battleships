@@ -1,2 +1,2 @@
 export * from "./buildGameBoard";
-export * from "./generateYAxis";
+export * from "./generateXAxis";

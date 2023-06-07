@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useGameBoardContext } from "../../context/GameBoardContext";
 
 export enum ErrorType {
@@ -27,14 +27,24 @@ export const useCoordinateForm = (): CoordinateForm => {
   const [hasError, setHasError] = useState<ErrorType | false>(false);
 
   // Function to parse the input value and extract the coordinate values
-  const parseValue = (value: string): [string, number] => {
-    const yAxisRegex = /^[a-zA-Z]+/;
-    const xAisRegex = /\d+$/;
+  const parseValue = (
+    value: string
+  ): {
+    x: string;
+    y: number;
+    row: number;
+    column: number;
+  } => {
+    const xAxisRegex = /^[a-zA-Z]+/;
+    const yAisRegex = /\d+$/;
 
-    const y = value.match(yAxisRegex)?.[0] || "";
-    const x = value.match(xAisRegex)?.[0] || "";
+    const x = (value.match(xAxisRegex)?.[0] || "").toLowerCase();
+    const y = Number(value.match(yAisRegex)?.[0]) || -1;
 
-    return [y, Number(x)];
+    const row = yAxis.indexOf(y);
+    const column = xAxis.indexOf(x);
+
+    return { x, y, row, column };
   };
 
   // Event handler for input value change
@@ -49,14 +59,11 @@ export const useCoordinateForm = (): CoordinateForm => {
       return ErrorType.INVALID_COORDINATES;
     }
 
-    const [y, x] = parseValue(value);
+    const { x, y, row, column } = parseValue(value);
 
-    if (!xAxis.includes(Number(x)) || !yAxis.includes(y.toLowerCase())) {
+    if (!xAxis.includes(x) || !yAxis.includes(y)) {
       return ErrorType.INVALID_COORDINATES;
     }
-
-    const row = yAxis.indexOf(y.toLowerCase());
-    const column = xAxis.indexOf(x);
 
     if (gameBoard[row][column].isHit) {
       return ErrorType.CELL_ALREADY_FIRED;
@@ -69,8 +76,8 @@ export const useCoordinateForm = (): CoordinateForm => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!hasError) {
-      const [y, x] = parseValue(inputValue);
-      fire(yAxis.indexOf(y.toLowerCase()), xAxis.indexOf(x));
+      const { row, column } = parseValue(inputValue);
+      fire(row, column);
       setInputValue("");
     }
   };

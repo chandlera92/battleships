@@ -5,7 +5,7 @@ const base = 26;
  * @param size The size of the game board grid.
  * @returns An array of y-axis labels.
  */
-export function generateYAxis(size: number): string[] {
+export function generateXAxis(size: number): string[] {
   const labels: string[] = [];
   let index = 0;
   let labelLength = 1;

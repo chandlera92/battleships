@@ -43,7 +43,7 @@ export const BoardGame: React.FC = () => {
               data-testid={"x-axis-label"}
               key={label}
             >
-              {label}
+              {label.toUpperCase()}
             </div>
           ))}
         </div>
@@ -53,13 +53,13 @@ export const BoardGame: React.FC = () => {
           <div className="boardGameRow" key={rowIndex}>
             {/* Y-Axis Labels */}
             <div className="boardGameYAxisCell" data-testid={"y-axis-label"}>
-              {yAxis[rowIndex].toUpperCase()}
+              {yAxis[rowIndex]}
             </div>
 
             {/* Game Board Cells */}
             {row.map((cell, cellIndex) => {
               const cellKey =
-                `${yAxis[rowIndex]}${xAxis[cellIndex]}`.toUpperCase();
+                `${xAxis[cellIndex]}${yAxis[rowIndex]}`.toUpperCase();
               return (
                 <div
                   className={clsx("boardGameCell", {
@@ -67,7 +67,6 @@ export const BoardGame: React.FC = () => {
                     touched: cell.isHit,
                     hover: inputValue === cellKey,
                   })}
-                  id={cellKey}
                   onClick={() => !cell.isHit && fire(rowIndex, cellIndex)}
                   onMouseEnter={() => handleChange(cellKey)}
                   key={cellKey}
